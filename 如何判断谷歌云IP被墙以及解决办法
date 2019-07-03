@@ -1,0 +1,18 @@
+1.Ping ip -t
+2.TCping -t ip
+tcping如何使用
+
+首先我们去 TCPing 软件的官网：https://elifulkerson.com/projects/tcping.php
+
+我们就可以看到最新版本的 TCPing 文件下载地址：
+
+Windows 32位系统 的请点击官网网页中的 tcping.exe 链接下载。https://download.elifulkerson.com//files/tcping/0.39/tcping.exe
+
+Windows 64位系统 的也可以点击官网网页中的 tcping.exe 链接下载，https://download.elifulkerson.com/files/tcping/0.39/x64/tcping64.exe
+如果必须使用 64位 文件，那么请点击进入 x64 文件夹，然后点击官网网页中的 tcping64.exe 链接下载（下载后重命名为 tcping.exe）。
+下载完成后，我们需要把下载的 tcping.exe 文件复制（或移动、剪切）到 C:\Windows\System32 文件夹下，也就是最终为 C:\Windows\System32\tcping.exe 文件。
+
+移动文件后，我们需要打开 CMD 程序（必须新打开），并输入以下内容回车：
+
+tcping -v
+如果提示命令不存在，那么以上操作有误，如果提示一大串英文（TCPing 版本信息），那就是安装正常。
