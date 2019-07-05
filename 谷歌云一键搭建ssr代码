@@ -2,6 +2,8 @@
 wget --no-check-certificate -O shadowsocks-all.sh https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-all.sh
 chmod +x shadowsocks-all.sh
 ./shadowsocks-all.sh 2>&1 | tee shadowsocks-all.log
+
+修改配置文件：vi /etc/shadowsocks-python/config.json
 2. 如果wget发现报错command not found、是因为没有安装wget软件包
 yum -y install wget
 3.超级一键加速脚本，bbr 原版/魔改/plus/锐速 四合一
