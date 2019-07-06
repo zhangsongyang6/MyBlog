@@ -1,0 +1,40 @@
+Debian修改ssh端口和禁止root远程登陆设置
+Posted by 破冰 on 2013-1-21 9:38 Monday
+linux修改端口22
+
+vi /etc/ssh/sshd_config
+
+找到#port 22
+将前面的#去掉,然后修改端口 port 1234
+重启服务就OK了
+
+service sshd restart
+
+或
+
+/etc/init.d/ssh restart
+
+为增强安全
+先增加一个普通权限的用户,并设置密码
+
+useradd test
+passwd test
+
+然后禁止ROOT远程SSH登录：
+
+vi /etc/ssh/sshd_config
+
+把其中的
+PermitRootLogin yes
+改为
+PermitRootLogin no
+重启sshd服务
+
+service sshd restart
+
+或
+
+/etc/init.d/ssh restart
+
+远程管理用普通用户test登录,然后用 su root 切换到root用户就可以拿到最高权限
+
