@@ -1,40 +1,14 @@
-Debian修改ssh端口和禁止root远程登陆设置
-Posted by 破冰 on 2013-1-21 9:38 Monday
-linux修改端口22
-
-vi /etc/ssh/sshd_config
-
-找到#port 22
-将前面的#去掉,然后修改端口 port 1234
-重启服务就OK了
-
-service sshd restart
-
-或
-
-/etc/init.d/ssh restart
-
-为增强安全
-先增加一个普通权限的用户,并设置密码
-
-useradd test
-passwd test
+注意：
+1.除非你是大佬，或者能够自行处理类似 command not found 的问题，否则请你使用 Debian 8.x 以上或者 Ubuntu 16.04 以上的 Linux 系统。
+2.创建好vps后，打开cmd,用ping和tcping命令看看是否能通。其中tcping需要下载
 
 然后禁止ROOT远程SSH登录：
 
 vi /etc/ssh/sshd_config
 
-把其中的
-PermitRootLogin yes
-改为
-PermitRootLogin no
+把其中的PermitRootLogin no,yes
 重启sshd服务
-
-service sshd restart
-
-或
-
-/etc/init.d/ssh restart
+service sshd restart或/etc/init.d/ssh restart
 
 远程管理用普通用户test登录,然后用 su root 切换到root用户就可以拿到最高权限
 
