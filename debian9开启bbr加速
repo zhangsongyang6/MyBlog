@@ -1,0 +1,18 @@
+BBR (Bottleneck Bandwidth and RTT) 是谷歌出品的一种新的TCP拥塞控制算法，可以让服务器充分利用自己的带宽，改算法早先被应用在自家YouTube的产品，在相对稳定完善后做了开源。
+Debian9 系统默认的是编译了 TCP BBR 的 4.9版内核，所以采用了Debian9系统的服务器可以不用进行繁琐的安装，仅通过几条简单的参数命令就能开启BBR加速。
+一、查看系统版本
+1. cat /proc/version
+二、改变系统变量
+2. echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf
+3. echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf
+三、然后执行如下命令（作用：保存上一步的修改并生效）
+4. sysctl -p
+四、接着执行如下命令
+5.sysctl net.ipv4.tcp_available_congestion_control
+如果Xshell显示如下内容，说明BBR就开启了。
+1.	sysctl net.ipv4.tcp_available_congestion_control
+2.	net.ipv4.tcp_available_congestion_control = bbr cubic reno
+五、最后执行如下命令，如果显示tcp_bbr +数字 说明BBR已开启成功
+6.lsmod | grep bbr
+六|、超级一键加速脚本，bbr 原版/魔改/plus/锐速 四合一
+wget "https://github.com/chiakge/Linux-NetSpeed/raw/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh
